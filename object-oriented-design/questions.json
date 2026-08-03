@@ -1,0 +1,2363 @@
+{
+  "schemaVersion": "1.0",
+  "id": "e67aaedaa48545cb83b31ee7767ed6ba",
+  "title": {
+    "Русский": "Object Oriented Design (ENG)"
+  },
+  "languages": [
+    "Русский"
+  ],
+  "topics": [
+    {
+      "id": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем",
+      "slug": "управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем",
+      "title": {
+        "Русский": "Управление сложностью и поддерживаемость объектно-ориентированных систем"
+      }
+    },
+    {
+      "id": "topic-декомпозиция-кода-малые-методы-классы-и-связность",
+      "slug": "декомпозиция-кода-малые-методы-классы-и-связность",
+      "title": {
+        "Русский": "Декомпозиция кода: малые методы, классы и связность"
+      }
+    },
+    {
+      "id": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов",
+      "slug": "инкапсуляция-инварианты-и-согласованное-состояние-объектов",
+      "title": {
+        "Русский": "Инкапсуляция, инварианты и согласованное состояние объектов"
+      }
+    },
+    {
+      "id": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей",
+      "slug": "управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей",
+      "title": {
+        "Русский": "Управление зависимостями, стабильные интерфейсы и внедрение зависимостей"
+      }
+    },
+    {
+      "id": "topic-проектирование-простых-абстракций-и-точек-расширения",
+      "slug": "проектирование-простых-абстракций-и-точек-расширения",
+      "title": {
+        "Русский": "Проектирование простых абстракций и точек расширения"
+      }
+    },
+    {
+      "id": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики",
+      "slug": "изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики",
+      "title": {
+        "Русский": "Изоляция инфраструктуры и внешних зависимостей от доменной логики"
+      }
+    },
+    {
+      "id": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности",
+      "slug": "модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности",
+      "title": {
+        "Русский": "Модульность: границы доменов, простые интерфейсы и снижение связанности"
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем-ticket-001",
+      "type": "singleChoice",
+      "topicId": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем",
+      "text": {
+        "Русский": "Почему метод, выросший до сотен строк с вложенными условиями, становится трудным в сопровождении?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Основная проблема в том, что такой метод нельзя покрыть автоматическими тестами без предварительного рефакторинга."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Его сложнее понять, безопасно изменить и полноценно протестировать, потому что изменения требуют согласования со всеми вызывающими классами."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Разработчики дольше разбираются, осторожнее вносят правки и хуже проверяют его, поскольку метод превышает принятый лимит строк."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Его сложнее понять, безопасно изменить и полноценно протестировать, потому что трудно учесть все возможные ветви выполнения."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:1.2.1.p1",
+          "quote": {
+            "Русский": "Implementing methods and classes that are simple is a great way to\nstart your journey toward maintainable object-oriented design. Con-\nsider  a  method  that  began  as  a  few  lines  with  a  handful  of  condi-\ntional statements but grew over time and now has hundreds of lines\nand ifs inside of ifs. Maintaining such a method is tricky."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем-ticket-002",
+      "type": "singleChoice",
+      "topicId": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем",
+      "text": {
+        "Русский": "Что может произойти с классом или методом со временем, если не поддерживать его простым?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Он может стать сложнее и потребовать больше времени на сопровождение; подробная документация компенсирует риск ошибок."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Он может стать детализированным и требовать знания предметной области; редкие изменения в нём уменьшают вероятность ошибок."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Он может стать сложным, трудным для понимания и сопровождения; такой сложный код чаще приводит к ошибкам."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Он может увеличиться в размерах, но оставаться понятным; количество ошибок от этого не меняется."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:1.2.1.p5",
+          "quote": {
+            "Русский": "Interestingly, classes and methods usually start simple and man-\nageable.  But  if  we  don’t  work  to  keep  them  like  this,  they  become\nhard  to  understand  and  maintain,  as  in  figure  1.2.  Complex  code\ntends  to  result  in  bugs,  which  are  drawn  to  complex  implementa-\ntions that are difficult to understand. Complex code is also challeng-\ning  to  maintain,  refactor,  and  test,  as  developers  fear  breaking\nsomething and struggle to identify all possible test cases."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем-ticket-003",
+      "type": "singleChoice",
+      "topicId": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем",
+      "text": {
+        "Русский": "Как уменьшение размера методов и классов помогает сделать их последующий рефакторинг безопаснее?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Небольшие единицы кода легче понять, протестировать и изменить, поэтому их проще поддерживать и развивать с меньшим риском ошибок."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Небольшие методы и классы легче переименовывать, перемещать и извлекать средствами IDE, поэтому рефакторинг не требует анализа бизнес-правил."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Небольшие единицы кода позволяют полагаться преимущественно на проверку компилятора, поэтому изменения можно вносить быстрее без расширения тестов."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Небольшие единицы кода изолируют зависимости, поэтому рефакторинг затрагивает локальную реализацию и не требует проверки взаимодействий."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:1.2.1.p5",
+          "quote": {
+            "Русский": "Interestingly, classes and methods usually start simple and man-\nageable.  But  if  we  don’t  work  to  keep  them  like  this,  they  become\nhard  to  understand  and  maintain,  as  in  figure  1.2.  Complex  code\ntends  to  result  in  bugs,  which  are  drawn  to  complex  implementa-\ntions that are difficult to understand. Complex code is also challeng-\ning  to  maintain,  refactor,  and  test,  as  developers  fear  breaking\nsomething and struggle to identify all possible test cases."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем-ticket-004",
+      "type": "singleChoice",
+      "topicId": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем",
+      "text": {
+        "Русский": "Почему для сложного метода трудно составить полный набор тестовых случаев?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Он часто меняется, поэтому ранее написанные тесты быстро устаревают."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "В нём слишком много строк, поэтому тесты выполняются медленно."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "В нём много зависимостей, поэтому тесты сложно изолировать."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Его трудно полностью понять, поэтому легко упустить возможные сценарии работы."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:1.2.1.p5",
+          "quote": {
+            "Русский": "Interestingly, classes and methods usually start simple and man-\nageable.  But  if  we  don’t  work  to  keep  them  like  this,  they  become\nhard  to  understand  and  maintain,  as  in  figure  1.2.  Complex  code\ntends  to  result  in  bugs,  which  are  drawn  to  complex  implementa-\ntions that are difficult to understand. Complex code is also challeng-\ning  to  maintain,  refactor,  and  test,  as  developers  fear  breaking\nsomething and struggle to identify all possible test cases."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем-ticket-005",
+      "type": "singleChoice",
+      "topicId": "topic-управление-сложностью-и-поддерживаемость-объектно-ориентированных-систем",
+      "text": {
+        "Русский": "Почему даже изначально простой класс или метод нужно постоянно поддерживать в простом состоянии?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Потому что простота преимущественно нужна для единого стиля, а понятность, тестируемость и безопасность изменений обеспечиваются инструментами разработки."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Потому что простота важна главным образом для новичков, тогда как опытные разработчики справятся с усложнением."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Без таких усилий код со временем усложняется, становится труднее понятным, тестируемым и изменяемым, а риск ошибок возрастает."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Потому что сложный код со временем может централизовать бизнес-правила, облегчать тестирование и уменьшать число ошибок."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:1.2.1.p5",
+          "quote": {
+            "Русский": "Interestingly, classes and methods usually start simple and man-\nageable.  But  if  we  don’t  work  to  keep  them  like  this,  they  become\nhard  to  understand  and  maintain,  as  in  figure  1.2.  Complex  code\ntends  to  result  in  bugs,  which  are  drawn  to  complex  implementa-\ntions that are difficult to understand. Complex code is also challeng-\ning  to  maintain,  refactor,  and  test,  as  developers  fear  breaking\nsomething and struggle to identify all possible test cases."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-декомпозиция-кода-малые-методы-классы-и-связность-ticket-001",
+      "type": "singleChoice",
+      "topicId": "topic-декомпозиция-кода-малые-методы-классы-и-связность",
+      "text": {
+        "Русский": "Какой метод или класс можно назвать связным?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Тот, который содержит все связанные операции модуля."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Тот, который активно взаимодействует с большим числом других классов."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Тот, который объединяет операции, использующие одни данные."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Тот, который выполняет одну ясную ответственность в системе."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:2.0.1.p5",
+          "quote": {
+            "Русский": "What does “cohesion” mean?\nA cohesive component (class or method) has a single, clear responsi-\nbility within the system—it does only one thing. A class that does one\nthing is undoubtedly smaller than a class that does multiple things. If\nwe strive for cohesive code, we naturally strive for simple code."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-декомпозиция-кода-малые-методы-классы-и-связность-ticket-002",
+      "type": "singleChoice",
+      "topicId": "topic-декомпозиция-кода-малые-методы-классы-и-связность",
+      "text": {
+        "Русский": "Какой фрагмент кода наиболее уместно выделить в приватный метод?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Фрагмент, выполняющий небольшое связное действие, которому можно дать ясное имя, объясняющее его назначение."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Фрагмент, который повторяется в нескольких местах метода, даже если объединяет разные обязанности."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Фрагмент, который можно сделать статическим, даже если он объединяет несколько связанных операций."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Фрагмент, использующий только поля класса, даже если его назначение трудно сформулировать."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:2.0.1.p7",
+          "quote": {
+            "Русский": "An excellent way to determine whether a new private method makes\nsense or whether a code segment can be an independent unit is by\nevaluating the following:"
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-декомпозиция-кода-малые-методы-классы-и-связность-ticket-003",
+      "type": "singleChoice",
+      "topicId": "topic-декомпозиция-кода-малые-методы-классы-и-связность",
+      "text": {
+        "Русский": "Какой уровень доступа следует выбрать для вспомогательного метода, который выполняет внутренний шаг работы класса и не должен вызываться внешним кодом?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Публичный метод"
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Метод с доступом по умолчанию"
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Приватный метод."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Защищённый метод"
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:2.0.1.p6",
+          "quote": {
+            "Русский": "Private methods\nPrivate methods can only be called from within the same class they’re\ndeclared in. They’re a perfect solution when you want to isolate a piece\nof code from the rest but don’t want it to be visible and possibly called\nfrom outside the class."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-декомпозиция-кода-малые-методы-классы-и-связность-ticket-004",
+      "type": "singleChoice",
+      "topicId": "topic-декомпозиция-кода-малые-методы-классы-и-связность",
+      "text": {
+        "Русский": "В каком случае фрагмент кода разумнее вынести в отдельный класс, а не оставить приватным методом исходного класса?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Когда фрагмент выполняет ответственность, отличающуюся от основной цели исходного класса."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Когда фрагмент содержит несколько последовательных шагов одной основной операции."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Когда фрагмент не использует состояние исходного класса и параметры."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Когда фрагмент вызывается несколькими методами исходного класса."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:2.0.2.p1",
+          "quote": {
+            "Русский": "Private  methods  may  not  be  the  ideal  location  for  extracted  code,\nparticularly if it’s unrelated to the main goal of the large unit. Con-\nsider the following to decide whether to move code to another class\ninstead of a private method:"
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-декомпозиция-кода-малые-методы-классы-и-связность-ticket-005",
+      "type": "singleChoice",
+      "topicId": "topic-декомпозиция-кода-малые-методы-классы-и-связность",
+      "text": {
+        "Русский": "В каком случае не стоит извлекать тесно связанные фрагменты кода в отдельный метод из-за последствий для сигнатуры?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Когда новый метод должен вернуть результат через значение."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Когда после извлечения методу понадобится передавать неизменяемые параметры."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Когда разделение тесно связанных фрагментов потребует сложной сигнатуры метода."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Когда новый метод потребует передачи состояния через поля."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:2.0.3.p2",
+          "quote": {
+            "Русский": "\uF0A1 When two or more puzzle pieces can’t live apart. Forcing sepa-"
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-декомпозиция-кода-малые-методы-классы-и-связность-ticket-006",
+      "type": "singleChoice",
+      "topicId": "topic-декомпозиция-кода-малые-методы-классы-и-связность",
+      "text": {
+        "Русский": "Почему не стоит разбивать программу на чрезмерно большое число микроклассов?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Это может ухудшить сопровождаемость кода."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Это всегда повышает связность классов."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Это может улучшить повторное использование."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Это может снизить гибкость архитектуры."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:2.0.3.p7",
+          "quote": {
+            "Русский": "Be careful about classitis\nIn the insightful book A Philosophy of Software Design, John Ousterhout\nargues that having too many small classes can hinder maintainability.\nHe  refers  to  creating  too  many  small  classes  as  classitis.  He  has  a\npoint.  You  don’t  want  micro  classes,  just  as  you  don’t  want  huge\nblocks of code."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-декомпозиция-кода-малые-методы-классы-и-связность-ticket-007",
+      "type": "singleChoice",
+      "topicId": "topic-декомпозиция-кода-малые-методы-классы-и-связность",
+      "text": {
+        "Русский": "Как сделать сложное условие, после которого отправляется письмо, более понятным?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Перенести отправку письма в булев метод с понятным именем, а проверку условия выполнить непосредственно перед вызовом."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Вынести проверку условия в отдельный булев метод с понятным именем, а отправку письма оставить отдельным действием."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Разбить условие на несколько именованных переменных и вызвать отправку письма в том же методе."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Оставить проверку условия в исходном методе, а отправку письма вынести в отдельный метод с понятным именем."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:2.0.9.p15",
+          "quote": {
+            "Русский": "The  if  statement  is  hard  to  understand.  You  have  to  dive  into  the\ncode to follow what this decision point is all about."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-декомпозиция-кода-малые-методы-классы-и-связность-ticket-008",
+      "type": "singleChoice",
+      "topicId": "topic-декомпозиция-кода-малые-методы-классы-и-связность",
+      "text": {
+        "Русский": "Новая бизнес-функция взаимодействует с несколькими существующими классами и требует множества зависимостей. Как лучше организовать её код?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Добавить функцию в наиболее близкий существующий класс."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Выделить функцию в отдельный класс, изолировав её от существующих классов."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Разбить функцию на несколько приватных методов в существующем классе."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Разместить функцию в утилитарном классе, передавая зависимости через параметры."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:2.0.10.p1",
+          "quote": {
+            "Русский": "Whenever there’s a new complex business logic to implement, trying\nto fit it into an existing class can be a burden. We may never be able to\nfind the suitable class because the rule spans multiple classes. We may\nalso  have  to  add  too  many  other  dependencies  to  an  existing  class\nbecause the rule will likely require interaction with many other classes.\n In such cases, it’s best to create another class that isolates the fea-\nture,  keeping  the  other  classes  free  from  growing  in  complexity.\nThere are a few advantages to doing that:"
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов-ticket-001",
+      "type": "singleChoice",
+      "topicId": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов",
+      "text": {
+        "Русский": "Почему проверку ограничения на число участников и обновление числа свободных мест лучше выполнять внутри класса, представляющего мероприятие?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Чтобы база данных контролировала лимит участников и пересчитывала свободные места, обеспечивая единые правила для всех приложений при параллельных операциях бронирования."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Чтобы контроллер пользовательского интерфейса проверял лимит перед записью и обновлял свободные места после подтверждения бронирования, поддерживая единый сценарий взаимодействия."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Чтобы класс сам сохранял согласованность своих данных и не зависел от того, не забудет ли внешний код обновить связанные значения."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Чтобы сервис бронирования централизованно проверял лимит и изменял свободные места, упрощая повторное использование правил разными клиентами."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:3.1.p2",
+          "quote": {
+            "Русский": "Make the class responsible for its consistency\nYou should ensure that consistency checks are coded in the class itself.\nIf you’re not sure which class should maintain data consistency, a good\nrule of thumb is to always make the class that contains the data also\nensure its consistency."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов-ticket-002",
+      "type": "singleChoice",
+      "topicId": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов",
+      "text": {
+        "Русский": "В каком случае проверку допустимости операции и связанную бизнес-логику разумнее перенести в сервис, а не размещать внутри сущности?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Когда операцию нужно вызывать из нескольких частей приложения, чтобы не дублировать код клиентов."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Когда операция изменяет несколько полей сущности или требует согласованно обновить её инварианты после действия в пределах объекта."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Когда для проверки нужна внешняя информация, например данные из базы данных, или проверка слишком сложна для самой сущности."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Когда операция запускается из пользовательского интерфейса и должна возвращать подробный результат для отображения пользователю после выполнения."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:3.1.1.p1",
+          "quote": {
+            "Русский": "Some  consistency  checks  need  information  beyond  that  in  the\nobject, or they may be too complex, requiring the code to live some-\nwhere  outside  the  class.  For  example,  we  may  need  to  consult  the\ninformation in the database to decide whether an operation is valid.\nWe can’t do (and shouldn’t want to do) that from inside the entity."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов-ticket-003",
+      "type": "singleChoice",
+      "topicId": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов",
+      "text": {
+        "Русский": "Сотрудник записывается на учебный курс. Какое из условий является бизнес-правилом валидации, а не предусловием вызова метода?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Сотрудник, передаваемый методу записи на курс, не должен быть null."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Сотрудник не должен проходить один и тот же курс более трёх раз."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Список участников курса, используемый методом, должен быть инициализирован перед добавлением сотрудника."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Передаваемый методу записи идентификатор сотрудника должен соответствовать ожидаемому формату данных."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:3.2.2.p1",
+          "quote": {
+            "Русский": "In enterprise systems, actions often require more than just meeting\nmethod  preconditions.  Take  enrolling  in  a  training  course  as  an\nexample. addEmployee has a simple precondition: don’t accept nulls.\nHowever, from a business perspective, there might be additional val-\nidations:  employees  can’t  take  the  same  course  more  than  three\ntimes, the employee must be from a specific office, and so on. These\nrules  aren’t  preconditions  per  se,  but  we  must  ensure  that  the\nrequest complies with them."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов-ticket-004",
+      "type": "singleChoice",
+      "topicId": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов",
+      "text": {
+        "Русский": "Почему полезно явно указывать предусловия метода, то есть допустимые значения его входных параметров?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Это позволяет клиентам самостоятельно выбирать стратегию обработки параметров."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Это снижает риск несогласованного выполнения программы при недопустимых данных."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Это избавляет метод от необходимости проверять входные значения."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Это упрощает автоматическое преобразование параметров к нужным типам."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:3.2.1.p6",
+          "quote": {
+            "Русский": "ensuring pre- and postconditions and explicitly documenting them,\nwe  reduce  the  chances  of  inconsistent  program  execution  and\nincrease the likelihood of others using classes as intended."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов-ticket-005",
+      "type": "singleChoice",
+      "topicId": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов",
+      "text": {
+        "Русский": "Как инкапсуляция проверок в методе addEmployee упрощает добавление новых условий приёма сотрудников в программу?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Новые проверки следует добавить в клиентский код перед вызовом addEmployee, чтобы учесть особенности каждого сценария."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Новые проверки следует оформлять как параметры addEmployee, чтобы вызывающий код передавал результаты проверок при каждом добавлении."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Новые проверки достаточно добавить в отдельный сервис валидации, а addEmployee оставить без изменений для сохранения универсальности."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Новые проверки достаточно добавить внутри addEmployee, не изменяя клиентский код во всех местах, где вызывается этот метод."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:3.2.5.p1",
+          "quote": {
+            "Русский": "“Tell, don’t ask” is a principle in object-oriented programming that\nencourages telling objects what to do instead of asking them for data\nand acting on it. You can read more about it on Martin Fowler’s wiki\n(https://martinfowler.com/bliki/TellDontAsk.html)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов-ticket-006",
+      "type": "singleChoice",
+      "topicId": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов",
+      "text": {
+        "Русский": "В классе «Учебное предложение» добавление сотрудника требует проверки согласованности данных. Как лучше предоставить эту возможность клиентскому коду?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Создать предметно названный безопасный метод, например addEmployee(), вместо сеттера или прямого изменения коллекции."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Вернуть клиенту изменяемую коллекцию сотрудников, поручив ему выполнять проверки перед добавлением."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Передавать добавление сотрудника отдельному сервису, который проверяет состояние учебного предложения перед изменением."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Добавить сеттер для коллекции сотрудников с проверкой каждого нового сотрудника."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:3.3.p4",
+          "quote": {
+            "Русский": "Setters only to attributes that describe the object\nCareless setters can lead to inconsistent objects, as they allow anyone\nto update the field of a class any way they want. Each setter in the\ncode should exist only after a deliberate decision."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов-ticket-007",
+      "type": "singleChoice",
+      "topicId": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов",
+      "text": {
+        "Русский": "Почему метод объекта может возвращать отдельную структуру данных со списком сотрудников вместо внутренней коллекции?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Чтобы снизить затраты памяти при передаче списка между компонентами."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Чтобы изменения этой структуры клиентом не изменяли внутреннее состояние объекта."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Чтобы клиент мог добавлять сотрудников напрямую в возвращённый список."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Чтобы клиент мог получать сотрудников в порядке их добавления."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:3.3.1.p5",
+          "quote": {
+            "Русский": "There are many ways we could implement this. For example, we\ncould  create  a  method  that  returns  a  different  data  structure  with\nthe list of employees: say, an EnrolledEmployees class. This way, even if\nclients changed the data, it wouldn’t be reflected in the entity."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов-ticket-008",
+      "type": "singleChoice",
+      "topicId": "topic-инкапсуляция-инварианты-и-согласованное-состояние-объектов",
+      "text": {
+        "Русский": "В каких случаях разумно разрешить прямое изменение дочернего объекта, обходя корень агрегата?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Когда изменение затрагивает лишь поля дочернего объекта и кажется локальным."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Когда прямой доступ заметно сокращает задержки критичной операции и упрощает обработку данных."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Когда инфраструктурные ограничения требуют отдельного репозитория для каждого дочернего объекта в модели."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Когда ожидаемая выгода явно перевешивает риск потери согласованности и роста затрат на поддержку."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:3.3.2.p5",
+          "quote": {
+            "Русский": "Are you willing to sacrifice consistency and maintainability for other\nbenefits?  My  advice  is  to  be  pragmatic.  Use  all  available  tools  and\nsoftware to your advantage, but be aware of the tradeoffs."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей-ticket-001",
+      "type": "singleChoice",
+      "topicId": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей",
+      "text": {
+        "Русский": "Какой недостаток интерфейса заставляет клиентский код зависеть от внутреннего устройства компонента?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Зависимость от конкретных классов"
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Смешение высокоуровневых и низкоуровневых обязанностей"
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Нестабильность интерфейса."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Раскрытие деталей внутренней реализации."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:4.0.1.p2",
+          "quote": {
+            "Русский": "Interfaces  don’t  work  miracles.  Bad  interfaces  can  still  be\ndesigned: for example, interfaces that aren’t stable or leak internal\nimplementation details. We need to design interfaces with stability\nand information hiding in mind."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей-ticket-002",
+      "type": "singleChoice",
+      "topicId": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей",
+      "text": {
+        "Русский": "Какой порядок разработки помогает выявить минимальный контракт интерфейса, нужный клиентскому коду?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Сначала сформировать общий интерфейс, а сценарии клиента уточнить позже."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Сначала описать все возможные операции, затем написать клиентский код."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Начать с проектирования внутренних компонентов, затем определить интерфейс."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Сначала реализовать высокоуровневый сценарий, а детали — позже."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:4.0.2.p1",
+          "quote": {
+            "Русский": "Writing  all  the  high-level  code  first  and  implementing  the  details\nlater is an interesting programming style, which you get better at the\nmore you practice."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей-ticket-003",
+      "type": "singleChoice",
+      "topicId": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей",
+      "text": {
+        "Русский": "На странице со списком учебных предложений нужны название, дата, число записавшихся и общее число мест. Почему клиенту лучше вернуть отдельную структуру с этими полями, а не всю сущность предложения?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Чтобы не передавать лишние данные, например имена записавшихся сотрудников, и не вызывать ненужные запросы к базе данных."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Чтобы закрепить формат ответа за текущей моделью данных и автоматически получать новые поля сущности без изменения API."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Чтобы клиент мог самостоятельно выбрать нужные поля, а сервер не поддерживал отдельный контракт списка."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Чтобы структура списка могла включать бизнес-логику подсчёта мест и проверять запись сотрудников непосредственно при формировании ответа."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:4.0.8.p1",
+          "quote": {
+            "Русский": "PeopleGrow! has a page in the web system that lists all the current\nofferings, the number of enrollments, and the number of available\nspots. The  Offering entity contains all this information. However, if\nwe  return this entire  entity  to  the frontend  client, we’ll  return too\nmuch  information  it  doesn’t  need.  For  example,  this  page  doesn’t\nneed the names of the enrolled employees. In some architectures,\nreturning this list of employees may even have a performance cost as\nit requires more queries to the database."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей-ticket-004",
+      "type": "singleChoice",
+      "topicId": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей",
+      "text": {
+        "Русский": "Какой вариант лучше всего скрывает от класса-клиента совместное использование UserDirectory и Bot при отправке сообщения?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Создать сервис поиска пользователя, а классу-клиенту передавать найденный идентификатор в Bot при отправке сообщения."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Создать фасад MessageBot с методом send(Message), который сам получает идентификатор пользователя и отправляет сообщение через Bot."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Изменить интерфейс Bot, добавив send(Message, userId), чтобы класс-клиент самостоятельно получал идентификатор пользователя через UserDirectory."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Внедрить UserDirectory и Bot непосредственно в класс-клиент, вызывая их последовательно при отправке сообщения."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:4.0.9.p29",
+          "quote": {
+            "Русский": "If modifying an existing interface is costly, try creating a wrapper\nclass that groups dependencies, especially if it can be given a mean-\ningful  domain  name.  For  example,  a  MessageBot  class  can  combine\nthe  responsibilities  of  obtaining  the  user  ID  and  sending  the  mes-\nsage. This class has a single send() method that takes a Message object\nand calls UserDirectory and Bot."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей-ticket-005",
+      "type": "singleChoice",
+      "topicId": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей",
+      "text": {
+        "Русский": "Почему зависимости класса полезно передавать через его конструктор?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Они создаются вместе с объектом и не требуют отдельной настройки при запуске."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Они избавляют класс от необходимости объявлять интерфейсы и упрощают создание объектов."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Они становятся сразу видимыми и их можно легко заменить, например при тестировании."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Это позволяет классу самостоятельно выбирать реализации и скрывать детали."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:4.1.p3",
+          "quote": {
+            "Русский": "Another  common  argument  against  dependency  injection  was\nthat using static methods was a way to simplify the dependency graph,\nbut this is misleading. Coupling still exists, and now we have less con-\ntrol over it. When dependencies are injected through constructors,\ndevelopers can easily see a class’s dependencies. Identifying depen-\ndencies  becomes  difficult  with  static  methods,  as  they’re  dispersed\nthroughout the class’s source code."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей-ticket-006",
+      "type": "singleChoice",
+      "topicId": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей",
+      "text": {
+        "Русский": "Почему операцию, которая сохраняет данные в базе, не стоит делать статическим методом?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Статический метод вынуждает хранить соединение с базой в глобальной переменной, нарушая потокобезопасность при параллельной работе."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Статический метод требует больше памяти для хранения состояния, а экземплярный использует ресурсы экономнее."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Её может потребоваться заменить или подменить при тестировании, а статический метод нельзя заменить во время выполнения."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Статический метод не поддерживает транзакции базы данных, поэтому несколько операций сохранения нельзя объединить в одну."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:4.1.p5",
+          "quote": {
+            "Русский": "Avoid static methods for operations that change the state\nStatic  methods  can’t  be  replaced  at  run  time,  making  the  design\ninflexible  and  hindering  testing.  Using  static  methods  as  a  design\npattern can lead to a chaotic, hard-to-maintain system."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей-ticket-007",
+      "type": "singleChoice",
+      "topicId": "topic-управление-зависимостями-стабильные-интерфейсы-и-внедрение-зависимостей",
+      "text": {
+        "Русский": "В каком случае вспомогательную операцию обычно допустимо сделать статическим методом?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Когда она нужна для повторного использования и её реализация вряд ли будет меняться."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Когда операция должна быть доступна без создания объекта, даже если вызывает внешние сервисы."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Когда она не изменяет состояние объекта и используется несколькими компонентами приложения."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Когда она является чистой: зависит только от входных данных и не обращается к внешним ресурсам."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:4.1.p7",
+          "quote": {
+            "Русский": "Another way to reason about what can be static and what can’t is\nto look at how “pure” the operation is. A simple utility method that\nreceives a string and returns the number of commas in that string is\nan example of a pure operation. It doesn’t depend on many other\nclasses,  and,  more  importantly,  it  doesn’t  depend  on  any  external\nresources. It’s often okey for pure functions to be static methods, as\nwe rarely have to replace them during production or testing."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-проектирование-простых-абстракций-и-точек-расширения-ticket-001",
+      "type": "singleChoice",
+      "topicId": "topic-проектирование-простых-абстракций-и-точек-расширения",
+      "text": {
+        "Русский": "Как лучше организовать функцию, для которой заранее ожидается много разных вариантов поведения?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Добавлять новые ветви условий в существующую функцию для каждого варианта."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Создать одну универсальную реализацию с параметрами для настройки каждого варианта поведения."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Выделить её в абстракцию и создавать отдельную реализацию для каждого нового варианта."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Разнести варианты по вспомогательным функциям и выбирать нужную через центральный диспетчер."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:5.0.1.p4",
+          "quote": {
+            "Русский": "\uF0A1 Features  that  require  lots  of  variations.  This  way,  whenever  a\nnew  variation  appears,  all  you  need  to  do  is  to  create  yet\nanother implementation of the abstraction."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-проектирование-простых-абстракций-и-точек-расширения-ticket-002",
+      "type": "singleChoice",
+      "topicId": "topic-проектирование-простых-абстракций-и-точек-расширения",
+      "text": {
+        "Русский": "В каком случае особенно полезно вводить абстракцию для поведения функции?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Когда требуется скрыть детали реализации функции от остальной системы."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Когда предполагается, что отдельные части поведения будут часто изменяться."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Когда ожидается появление множества новых вариантов поведения функции."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Когда для разных клиентов нужно составлять разные комбинации множества вариантов поведения."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:5.0.1.p5",
+          "quote": {
+            "Русский": "\uF0A1 Features that require flexibility in terms of composability. If a\nfeature has dozens of variations and you may assemble a differ-\nent  combination  for  each  client,  then  having  an  abstraction\nhelps you combine variations without much extra code."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-проектирование-простых-абстракций-и-точек-расширения-ticket-003",
+      "type": "singleChoice",
+      "topicId": "topic-проектирование-простых-абстракций-и-точек-расширения",
+      "text": {
+        "Русский": "Как следует описывать хорошую абстракцию, чтобы её пользователю не нужно было знать детали реализации?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Через перечень доступных методов и обязательную последовательность их вызова клиентом."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Через выбор единой базовой реализации, которую обязаны наследовать все варианты."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Через описание сущностей предметной области и их связей, не формулируя выполняемую операцию."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Через то, какое действие она выполняет, а не через способ его реализации."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:5.0.3.p2",
+          "quote": {
+            "Русский": "A good abstraction separates the “what” from the “how.” In other\nwords, good abstractions focus on what they should do but know noth-\ning about how it’s done. Good abstractions make you, the developer,\nnot care about concrete implementations. You read the code that uses\nthe abstraction, and that’s enough for you to know what’s going on."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-проектирование-простых-абстракций-и-точек-расширения-ticket-004",
+      "type": "singleChoice",
+      "topicId": "topic-проектирование-простых-абстракций-и-точек-расширения",
+      "text": {
+        "Русский": "Какой контракт лучше всего подходит для простой абстракции?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Тот, который принимает данные с указанием нужной реализации и возвращает результат в формате этой реализации."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Тот, который предоставляет клиенту параметры настройки и возвращает результат вместе с диагностической информацией."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Тот, который принимает весь потенциально полезный контекст и возвращает подробный результат для будущих клиентов."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Тот, который принимает только данные, необходимые для работы, и возвращает только результат, нужный клиенту."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:5.0.3.p3",
+          "quote": {
+            "Русский": "Good abstractions define a clear contract that clients can rely on.\nThey make it clear to clients what their preconditions are and what\nthey promise to deliver. The contracts of a good abstraction are also\nas  lean  as  possible.  They  don’t  expect  anything  more  from  clients\nthan  the  precise  data  they  require  to  get  the  job  done,  and  they\ndon’t return more than what the clients need."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-проектирование-простых-абстракций-и-точек-расширения-ticket-005",
+      "type": "singleChoice",
+      "topicId": "topic-проектирование-простых-абстракций-и-точек-расширения",
+      "text": {
+        "Русский": "Какой признак лучше всего показывает, что программная абстракция удобна для клиента?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Её основную пользу можно получить с помощью нескольких строк кода без сложных предварительных требований."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Клиенту достаточно понимать названия её методов, не разбираясь в устройстве конкретных реализаций."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Её конкретные реализации содержат минимум методов и не требуют сложной внутренней логики."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Её можно расширять новыми реализациями без изменения существующего клиентского кода."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:5.0.3.p5",
+          "quote": {
+            "Русский": "A good abstraction is easy for clients to use. With a few lines of\ncode, you should get the most out of the abstraction. You shouldn’t\nneed  hundreds  of  lines  of  code  or  have  to  meet  complex  require-\nments to use it. Good abstractions are straightforward."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-проектирование-простых-абстракций-и-точек-расширения-ticket-006",
+      "type": "singleChoice",
+      "topicId": "topic-проектирование-простых-абстракций-и-точек-расширения",
+      "text": {
+        "Русский": "Какое свойство хорошей абстракции позволяет заменять одну конкретную реализацию другой без изменения кода, который ею пользуется?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Наличие одинаковых методов у конкретных реализаций."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Независимость использующего кода от конкретной реализации."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Возможность выбирать конкретную реализацию во время выполнения."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Простота создания новых конкретных реализаций."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:5.0.3.p10",
+          "quote": {
+            "Русский": "Finally, a good abstraction allows us to plug and unplug concrete\nimplementations without requiring any changes in the code. Good\nabstractions  allow  developers  to  mix  and  match  different  concrete\nimplementations to compose more complex behavior in very com-\nplex features."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-проектирование-простых-абстракций-и-точек-расширения-ticket-007",
+      "type": "singleChoice",
+      "topicId": "topic-проектирование-простых-абстракций-и-точек-расширения",
+      "text": {
+        "Русский": "Что следует предусмотреть при проектировании точки расширения для расчёта скидок в корзине интернет-магазина?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Интерфейс для ручного выбора покупателем применяемого правила скидки в корзине."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Механизм выбора одного наиболее выгодного правила скидки для расчёта итоговой цены."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Удобный механизм подключения разных правил скидок, чтобы они совместно рассчитывали итоговую цену."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Единое правило скидки, которое централизованно рассчитывает итоговую цену корзины."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:5.0.2.p2",
+          "quote": {
+            "Русский": "However, in other cases, we design abstractions to provide flexibil-\nity and variability to a feature. Consider the bookstore from the begin-\nning  of  this  chapter.  The  abstraction  Discount  was  created  to  apply\nmany  discounts  in  the  customer’s  basket.  The  abstraction  isn’t\nenough in this case. We need a mechanism to plug as many varied dis-\ncount rules as possible into the customer’s basket and have them cal-\nculate the final price."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-проектирование-простых-абстракций-и-точек-расширения-ticket-008",
+      "type": "singleChoice",
+      "topicId": "topic-проектирование-простых-абстракций-и-точек-расширения",
+      "text": {
+        "Русский": "Какой признак в коде скидок говорит о том, что простых условий уже недостаточно и стоит подумать об абстракции?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Появление множества повторяющихся ветвлений if для реализации разных правил скидок."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Увеличение времени выполнения расчёта скидок при росте числа заказов."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Появление третьего правила скидки, даже без повторяющихся ветвлений."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Появление необходимости хранить параметры скидок в отдельной таблице базы данных."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:5.1.3.p1",
+          "quote": {
+            "Русский": "If  you  doubt  whether  an  abstraction  is  needed,  you  can  wait  for\nempirical evidence. For example, when implementing the first dis-\ncount  rule  for  the  e-book  store,  we  don’t  need  more  than  simple\ncode.  If  we’re  then  asked  to  implement  a  second  discount  rule,\nthat’s  fine;  maybe  two  are  all  we’ll  ever  need.  But  when  discount\nrules 3, 4, and 5 come in, and we start writing many if statements in\na row, it may be time to rethink and go for an abstraction."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики-ticket-001",
+      "type": "singleChoice",
+      "topicId": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики",
+      "text": {
+        "Русский": "Почему детали работы с базой данных полезно изолировать от остального кода приложения?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Чтобы доменный код мог эффективно использовать уникальные возможности выбранной СУБД."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Чтобы каждый модуль приложения мог самостоятельно выбирать стратегию доступа к базе данных."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Чтобы остальные части системы не знали о существовании базы данных."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Чтобы изменение технической реализации базы данных затрагивало как можно меньшую часть системы."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:6.0.2.p9",
+          "quote": {
+            "Русский": "My  viewpoint  lies  somewhere  in  between  these  perspectives.  I\nagree that infrastructure should not be treated as a mere detail. For\nexample,  databases  are  core  components  of  information  systems.\nHowever,  we  also  don’t  want  the  implementation  details  scattered\nthroughout the codebase. Instead, we should isolate infrastructure-\nspecific code as much as possible to minimize the effect of changes,\nsimilar to what we discussed in the previous section."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики-ticket-002",
+      "type": "singleChoice",
+      "topicId": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики",
+      "text": {
+        "Русский": "Почему разработчикам полезно знать, что получение списка сотрудников выполняется удалённым вызовом, даже если детали реализации инфраструктуры изолированы?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Чтобы считать такой вызов обычной локальной операцией и не усложнять клиентский код."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Чтобы включать детали сетевого взаимодействия непосредственно в правила предметной области."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Чтобы учитывать типичные сбои распределённых систем и писать код, устойчивый к ним."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Чтобы выбрать наиболее подходящий формат данных для передачи списка сотрудников."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:6.0.2.p1",
+          "quote": {
+            "Русский": "Your design should conceal the internal details of the infrastructure\nfrom the rest of the code to minimize the effect of implementation\nchanges. However, it’s important not to hide too much from devel-\nopers, because understanding what’s happening behind the scenes\nenables them to write optimal and efficient code."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики-ticket-003",
+      "type": "singleChoice",
+      "topicId": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики",
+      "text": {
+        "Русский": "Где следует реализовать кэширование метода поиска сотрудников по фамилии, чтобы остальной код приложения не пришлось менять?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "В интерфейсе EmployeeRepository, расширив его операциями управления кэшем."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "В контроллере API, обрабатывающем запросы поиска сотрудников по фамилии."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "В сервисе управления сотрудниками, вызывающем поиск по фамилии."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "В реализации репозитория доступа к данным, например в HibernateEmployeeRepository."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:6.0.4.p11",
+          "quote": {
+            "Русский": "PeopleGrow! is definitely in a good position if we need to change how\nwe  handle  database  access.  Behind  the  scenes,  PeopleGrow!  uses\nHibernate as a persistence framework and Postgres as its database of\nchoice. HibernateEmployeeRepository contains all the handling code."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики-ticket-004",
+      "type": "singleChoice",
+      "topicId": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики",
+      "text": {
+        "Русский": "Почему попытка полностью отвязать приложение от всех внешних зависимостей обычно непрактична?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Полная развязка недостижима и может многократно усложнить код из-за лишних абстракций."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Потому что фреймворки требуют прямого доступа к доменным объектам."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Потому что изоляция препятствует повторному использованию возможностей выбранного фреймворка и снижает гибкость архитектуры."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Полная развязка ограничивает обновление библиотек и делает их замену рискованнее."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:6.1.2.p1",
+          "quote": {
+            "Русский": "Although it’s important to minimize coupling to external dependencies\nyou don’t control, it’s equally essential to avoid fighting against them.\nComplete decoupling from all dependencies is an unattainable goal."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики-ticket-005",
+      "type": "singleChoice",
+      "topicId": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики",
+      "text": {
+        "Русский": "Где в приложении уместно использовать вспомогательные средства Spring MVC, не связывая с ними доменную модель?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "В доменных сервисах, рядом с бизнес-правилами."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "В представлениях, непосредственно рядом с шаблонами."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Во внешнем слое, например в контроллерах."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "В репозиториях, вместе с кодом доступа к данным."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:6.1.2.p3",
+          "quote": {
+            "Русский": "\uF0A1 If  I  have  chosen  Spring  MVC  as  my  model-view-controller\n(MVC) framework, I don’t attempt excessive decoupling from\nit. I use all the capabilities that Spring provides to their fullest\nextent.  Although  I  avoid  using  Spring  code  in  my  domain\nobjects  (such  as  entities  and  services),  I  don’t  shy  away  from\nusing Spring’s helpful utilities in my controllers."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики-ticket-006",
+      "type": "singleChoice",
+      "topicId": "topic-изоляция-инфраструктуры-и-внешних-зависимостей-от-доменной-логики",
+      "text": {
+        "Русский": "Как лучше организовать интеграцию с часто меняющейся библиотекой стороннего платёжного сервиса?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Создать единый сервис платежей, но передавать типы библиотеки в доменный код."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Создать слой-обёртку над библиотекой и не позволять остальному коду зависеть от неё напрямую."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Использовать библиотеку напрямую во всех модулях, чтобы быстрее внедрять её обновления."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Разместить интеграционный код в отдельном модуле и экспортировать его классы для домена."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:6.1.2.p9",
+          "quote": {
+            "Русский": "\uF0A1 If I need to integrate with a third-party payment gateway using\nits  provided  library,  which  may  be  less  stable  than  large-scale\nopen source frameworks and subject to frequent changes (due\nto the ever-evolving nature of payment systems), I add a wrap-\nper  layer  on  top  of  it  and  ensure  that  no  other  parts  of  the\ncode directly depend on it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности-ticket-001",
+      "type": "singleChoice",
+      "topicId": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности",
+      "text": {
+        "Русский": "Почему новое бизнес-правило для счетов желательно реализовывать только в модуле Invoice, не изменяя модуль Delivery?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Потому что Delivery должен автоматически повторять правила, определённые в Invoice."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Чтобы изменение в домене счетов затрагивало как можно меньше несвязанных модулей."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Чтобы синхронизировать правила счетов и доставки в едином процессе."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Чтобы правила счетов и доставки проверялись одной командой в общем модуле."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:7.0.1.p1",
+          "quote": {
+            "Русский": "Deciding what should be included in a module is as challenging as\ndetermining what should be in a class or method. Ideally, we want to\nminimize the number of modules that must be modified when a busi-\nness domain changes. For example, if a new business rule emerges for\ninvoices, we should only need to change the Invoice module; there\nshould be no need to modify the Delivery module."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности-ticket-002",
+      "type": "singleChoice",
+      "topicId": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности",
+      "text": {
+        "Русский": "С кем особенно важно совместно пересматривать границы модулей, если бизнес-домены оказываются тесно переплетены?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "С бизнес-аналитиками и менеджерами по сопровождению систем."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "С архитекторами предприятия и руководителями разработки."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "С владельцами продуктов и ведущими разработчиками."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "С экспертами предметной области и техническими руководителями."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:7.0.2.p1",
+          "quote": {
+            "Русский": "It’s undoubtedly hard to define a clear boundary between different\nbusiness domains. Billing, Delivery, and Invoice may look completely\ndifferent from each other in the simple example of this book, but in\nreal life, domains are often strongly intertwined. I recommend work-\ning  in  strong  collaboration  with  domain  experts  (they  understand\nthe  business)  and  technical  leads  (they  understand  the  pains  that\nteams are having when trying to deliver working software), and keep\nrevisiting your interpretation of the domain. An excellent reference\non  strategies  to  identify  domain  boundaries  is  the  canonical  book\nDomain-Driven Design by Eric Evans, in particular, sections 1 (putting\nthe domain model to work) and 4 (strategic design)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности-ticket-003",
+      "type": "singleChoice",
+      "topicId": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности",
+      "text": {
+        "Русский": "Компоненты A и B почти всегда нужно менять одновременно. Как их лучше организовать?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Вынести общую логику A и B в отдельный модуль."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Сохранить отдельные модули с синхронным версионированием."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Разместить A и B в одном модуле."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Разделить A и B по разным модулям."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:7.0.3.p1",
+          "quote": {
+            "Русский": "Another  way  to  approach  this  principle  is  to  ensure  that  related\nthings  or  components  that  require  simultaneous  changes  are  kept\nclose together. When we know that altering A necessitates modifying\nB, the change becomes easier and more predictable if A and B are\nnearby, such as in the same module."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности-ticket-004",
+      "type": "singleChoice",
+      "topicId": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности",
+      "text": {
+        "Русский": "Что следует сделать команде, если связь между модулями Invoice и Delivery нельзя устранить в рамках бюджета разработки?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Объединить Invoice и Delivery и настроить интеграционные тесты."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Описать порядок ручной проверки и назначить ответственных за согласование изменений."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Стабилизировать общий API и проверять изменения интеграционными тестами."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Задокументировать связь и настроить автоматические предупреждения о ломающих изменениях."
+          },
+          "isCorrect": true
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:7.0.4.p2",
+          "quote": {
+            "Русский": "For example, suppose we need to ensure that changes made to the\ndetails of an invoice (such as adding a new attribute to represent the\nbuyer’s preferred address format) also reflect in the PDF generated\nby  the  Delivery  module.  We  can  contemplate  various  design\nalternatives to avoid this coupling, and that’s great! The longer we\ncan avoid coupling, the better. However, the reality is that you won’t\nalways  be  able  to  come  up  with  optimal  alternatives,  especially\nconsidering budget constraints when developing a feature."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности-ticket-005",
+      "type": "singleChoice",
+      "topicId": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности",
+      "text": {
+        "Русский": "Что происходит с клиентским кодом, если модуль доставки меняет внутреннюю стратегию получения статуса заказа, например переходит с базы данных на кэш?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Клиентский код не требует изменений, поскольку продолжает использовать тот же интерфейс получения статуса."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Клиентский код должен будет передавать признак источника статуса при каждом запросе."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Клиентский код потребуется обновить, поскольку ему нужно выбрать кэш как новый источник статуса."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Клиентскому коду потребуется изменить способ запроса статуса, чтобы учитывать кэширование."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:7.0.5.p2",
+          "quote": {
+            "Русский": "Let’s delve into what constitutes a simple interface for a module.\nThe  interface  should  not  require  knowledge  of  how  the  module\noperates  internally.  For  example,  suppose  the  Delivery  module\noffers  an  API  that  provides  information  about  whether  the  cus-\ntomer’s goods were delivered. In that case, clients of this API should"
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности-ticket-006",
+      "type": "singleChoice",
+      "topicId": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности",
+      "text": {
+        "Русский": "Какой признак говорит о том, что интерфейс модуля слишком сильно нагружает клиента?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Клиенту приходится часто обновлять свой код при изменениях интерфейса и поддерживать совместимость со старыми версиями."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Клиенту нужно выполнять сложную настройку и вызывать методы в строго заданной последовательности, чтобы получить результат."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Клиенту необходимо заранее согласовывать с командой модуля формат данных для каждого нового сценария."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Клиенту нужно выбирать один из нескольких независимых методов и передавать параметры для результата."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:7.0.5.p7",
+          "quote": {
+            "Русский": "A  good  interface  is  also  easy  to  use.  Clients  should  not  be  bur-\ndened  with  performing  complex  setups  or  invoking  a  convoluted\nchain of methods in a specific order for the module to fulfill its pur-\npose. All the complexity should be handled within the module, min-\nimizing  the  client’s  responsibilities.  Suppose  we  need  to  expose  a\nmodule  feature  that  requires  an  intricate  setup.  In  that  case,  it  is\nimportant to ensure that most of the complexity resides within the\nmodule rather than encumbering the client."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности-ticket-007",
+      "type": "singleChoice",
+      "topicId": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности",
+      "text": {
+        "Русский": "В интерфейсе другого модуля случайно стали видны его внутренние детали. Как следует поступить клиентскому коду?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Считать утёкшие детали частью контракта и опираться на них."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Временно привязать клиентскую логику к деталям до исправления интерфейса."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Игнорировать утёкшие детали и не строить на них свою логику."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Использовать утёкшие детали для оптимизации клиентской логики."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:7.0.10.p1",
+          "quote": {
+            "Русский": "Ensuring  that  modules  remain  unaware  of  the  internal  details  of\nother modules is a responsibility shared between the module and its\nclients. In an ideal world, clients wouldn’t have to worry about this\nbecause modules would be perfectly designed, and no details would"
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности-ticket-008",
+      "type": "singleChoice",
+      "topicId": "topic-модульность-границы-доменов-простые-интерфейсы-и-снижение-связанности",
+      "text": {
+        "Русский": "Почему модулю не следует использовать внутренние классы другого модуля?"
+      },
+      "answers": [
+        {
+          "id": "a1",
+          "text": {
+            "Русский": "Внутренние классы нельзя импортировать напрямую, поскольку компилятор разрешает доступ только через публичный API."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a2",
+          "text": {
+            "Русский": "Изменение внутреннего класса может сломать зависимый от него модуль и затруднить развитие исходного модуля."
+          },
+          "isCorrect": true
+        },
+        {
+          "id": "a3",
+          "text": {
+            "Русский": "Использование внутренних классов увеличивает число зависимостей и замедляет сборку приложения."
+          },
+          "isCorrect": false
+        },
+        {
+          "id": "a4",
+          "text": {
+            "Русский": "Внутренние классы могут дублировать возможности публичного API и усложнить выбор подходящего интерфейса для интеграции."
+          },
+          "isCorrect": false
+        }
+      ],
+      "sourceReferences": [
+        {
+          "pointer": "d0001:7.0.11.p1",
+          "quote": {
+            "Русский": "In monoliths, it’s common for all modules to be in the same code-\nbase, and all a developer needs to do to access classes from another\nmodule  is  to  declare  them  in  the  package  manager.  This  grants\ndevelopment  teams  great  power  because  it  requires  zero  effort  to\nstart  using  a  new  module.  However,  it  also  places  a  significant\nresponsibility on them to ensure that they don’t use classes that are\nmeant to be internal to a specific module, as shown in figure 7.3."
+          }
+        }
+      ]
+    }
+  ]
+}
